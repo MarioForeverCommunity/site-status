@@ -23,7 +23,7 @@
       </n-p>
       <n-p depth="3">
         {{ $t("footer.basedOn") }}
-        <n-text depth="3" @click="jumpLink('https://uptimerobot.com/')">
+        <n-text depth="3" @click="jumpLink('https://stats.uptimerobot.com/Zp7JwiMqY1')">
           {{ $t("uptimeRobot") }}
         </n-text>
         {{ $t("footer.interface") }} |
@@ -50,9 +50,8 @@ const { public: configPublic } = useRuntimeConfig();
 const { siteIcp, version } = configPublic;
 
 const linkData = {
-  github: "https://github.com/imsyy/site-status",
-  home: "https://www.imsyy.top",
-  email: "mailto:one@imsyy.top",
+  github: "https://github.com/MarioForeverCommunity/site-status",
+  home: "https://www.marioforever.net/",
 };
 </script>
 
