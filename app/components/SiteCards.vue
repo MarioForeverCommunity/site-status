@@ -42,6 +42,25 @@
                 <Icon name="icon:link" />
               </template>
             </n-button>
+            <!-- 可用率 -->
+            <n-text v-if="site?.down?.times" class="uptime" depth="3">
+              {{
+                $t("card.summaryData", {
+                  days: site?.days?.length,
+                  times: site?.down?.times,
+                  duration: formatDuration(site?.down?.duration),
+                  percent: site?.percent,
+                })
+              }}
+            </n-text>
+            <n-text v-else class="uptime" depth="3">
+              {{
+                $t("card.summary", {
+                  days: site?.days?.length,
+                  percent: site?.percent,
+                })
+              }}
+            </n-text>
           </n-flex>
           <n-flex
             :style="{
@@ -99,24 +118,6 @@
         <n-flex class="summary" justify="space-between">
           <n-text class="date" depth="3">
             {{ formatTime(site?.days?.[0]?.date || 0) }}
-          </n-text>
-          <n-text v-if="site?.down?.times" depth="3">
-            {{
-              $t("card.summaryData", {
-                days: site?.days?.length,
-                times: site?.down?.times,
-                duration: formatDuration(site?.down?.duration),
-                percent: site?.percent,
-              })
-            }}
-          </n-text>
-          <n-text v-else depth="3">
-            {{
-              $t("card.summary", {
-                days: site?.days?.length,
-                percent: site?.percent,
-              })
-            }}
           </n-text>
           <n-text class="date" depth="3">{{ $t("meta.today") }}</n-text>
         </n-flex>
@@ -217,6 +218,9 @@ onMounted(getSiteData);
       .n-tag {
         --n-height: 20px;
         cursor: pointer;
+      }
+      .uptime {
+        font-size: 13px;
       }
       .status {
         .n-text {
