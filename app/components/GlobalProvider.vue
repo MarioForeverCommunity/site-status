@@ -29,12 +29,6 @@
 import {
   zhCN,
   dateZhCN,
-  enUS,
-  dateEnUS,
-  jaJP,
-  dateJaJP,
-  koKR,
-  dateKoKR,
   darkTheme,
   useOsTheme,
   useLoadingBar,
@@ -50,15 +44,11 @@ const colorMode = useColorMode();
 const statusStore = useStatusStore();
 
 // 站点语言
-const siteLang = computed(() => {
-  const langMap: Record<string, { locale: typeof zhCN; date: typeof dateZhCN }> = {
-    "zh-CN": { locale: zhCN, date: dateZhCN },
-    en: { locale: enUS, date: dateEnUS },
-    "ja-JP": { locale: jaJP, date: dateJaJP },
-    "ko-KR": { locale: koKR, date: dateKoKR },
-  };
-  return langMap[statusStore.siteLang] || { locale: undefined, date: undefined };
-});
+const siteLang = computed(() =>
+  statusStore.siteLang === "zh-CN"
+    ? { locale: zhCN, date: dateZhCN }
+    : { locale: undefined, date: undefined },
+);
 
 // 获取明暗模式
 const theme = computed(() => {
